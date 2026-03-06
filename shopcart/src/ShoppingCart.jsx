@@ -11,22 +11,12 @@ function ShoppingCart({ productData }) {
   let changedAmount = (e, idx) => {
     let copy = [...quantity];
     copy[idx] = e.target.value;
-    
     setQuantity(copy);
-   
   };
 
     let totalNoOfItems = quantity.reduce((sum,curr)=>{
       return sum=sum+Number(curr)
     },0);
-//   useEffect(() => {
-  
-//     quantity.map((el) => {
-//           console.log(el)
-//       totalNoOfItems = totalNoOfItems + el;
-//        console.log(totalNoOfItems)
-//     });
-//   }, [quantity]);
   return (
     <>
       <div className="m-2">
@@ -50,7 +40,7 @@ function ShoppingCart({ productData }) {
             style={{ border: "1px solid #bbb5b5" }}
             className="p-3 d-flex flex-row"
           >
-            <div className="d-flex flex-column ">
+            <div className="d-flex flex-column  align-items-center" style={{width:"15rem"}}>
               <h4>{el.desc}</h4>
               <div>
                 {" "}
@@ -62,12 +52,13 @@ function ShoppingCart({ productData }) {
               style={{ marginTop: "3rem", marginLeft: "1rem" }}
             >
               <div>
-                <label style={{border:"1px solid #bbb5b5"}}>
+                <label>
                   <input
+                  autoComplete="off"
                     name="myInput"
                     value={quantity[index]}
                     onChange={(e) => changedAmount(e, index)}
-                    style={{width:"2rem",border:"1px solid #bbb5b5"}}
+                    style={{width:"2rem",border:"3px solid #bbb5b5",height:"3rem",textAlign:"center"}}
                   />
                 </label>{" "}
                 {/* {totalNoOfItems} */}
