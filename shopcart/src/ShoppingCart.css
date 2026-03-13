@@ -5,6 +5,12 @@
   margin: 3px !important;
   font-weight: bold;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  font-size: 1.3rem;
 }
 .addBtnDiv {
   border: 1px solid lightgray;
