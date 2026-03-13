@@ -16,7 +16,8 @@ function ShoppingCart({ productData }) {
   let homePage = () => {
     setShowFinalCart(false);
     setIntialScreen(true);
-    
+    setQuantity([0,0,0,0]);
+    totalNoOfItems=0;
   };
   let changedAmount = (e, idx) => {
     let copy = [...quantity];

@@ -4,8 +4,8 @@ function FinalShoppingCart({ cartInfo }) {
   console.log(checkCartEntirely);
   return (
     <>
-      <div>
-        <h1>Your Cart Items</h1>
+      <div className="p-4" style={{width:"50rem"}}>
+        <h3>Your Cart Items</h3>
         {checkCartEntirely.length === 0 ? (
           <>
             <h3>No Items in the cart , Please add the items in the cart</h3>
@@ -13,19 +13,18 @@ function FinalShoppingCart({ cartInfo }) {
         ) : (
           checkCartEntirely.map((el, index) => {
             return (
-              <div key={el.desc}>
-                <div>
-                  <h1>Hello</h1>
+              <div key={el.desc} style={{border:"1px solid lightgray"}} className="d-flex flex-row p-3">
+                <div className="d-flex flex-column" >
                   <img
                     src={el.image}
-                    style={{ height: "5rem", width: "5rem" }}
+                    style={{ height: "6rem", width: "6rem" }}
                   />
                   {el.desc}
                 </div>
-                <div>
+                <div className="d-flex flex-row " style={{marginTop:"2.5rem",marginLeft:"3rem"}}>
                   <p>
-                    <span>Quantity: </span>
-                    {el.value}
+                    <span className="fw-bold">Quantity: {el.value}</span>
+                    
                   </p>
                 </div>
               </div>
