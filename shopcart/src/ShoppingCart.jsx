@@ -18,6 +18,7 @@ function ShoppingCart({ productData }) {
     setIntialScreen(true);
     setQuantity([0,0,0,0]);
     totalNoOfItems=0;
+    setTrackCartItems([])
   };
   let changedAmount = (e, idx) => {
     let copy = [...quantity];
