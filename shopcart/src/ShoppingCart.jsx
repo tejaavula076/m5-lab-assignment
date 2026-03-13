@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./ShoppingCart.css";
-import FinalShoppingCart from "./FinalShoppingCart";
+import FinalShoppingCart from "./FinalShoppingCart.jsx";
 
 function ShoppingCart({ productData }) {
   let [quantity, setQuantity] = useState([0, 0, 0, 0]);
@@ -14,8 +14,9 @@ function ShoppingCart({ productData }) {
   let [trackCartItems, setTrackCartItems] = useState([]);
 
   let homePage = () => {
-    setIntialScreen(true);
     setShowFinalCart(false);
+    setIntialScreen(true);
+    
   };
   let changedAmount = (e, idx) => {
     let copy = [...quantity];
@@ -28,7 +29,6 @@ function ShoppingCart({ productData }) {
   }, 0);
 
   let addToCart = (e, idx, el) => {
-    console.log("add items list", el);
     let copyOfQty = [...quantity];
     copyOfQty[idx] = copyOfQty[idx] + 1;
     setQuantity(copyOfQty);
@@ -92,7 +92,7 @@ function ShoppingCart({ productData }) {
             <p>{totalNoOfItems} items</p>
           </div>
         </div>
-        {showFinalCart && !intialScreen && <FinalShoppingCart />}
+        {showFinalCart && !intialScreen && <FinalShoppingCart cartInfo={trackCartItems}/>}
         {!showFinalCart &&
           intialScreen &&
           productData.map((el, index) => (
