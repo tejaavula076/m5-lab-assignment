@@ -20,6 +20,27 @@ function ShoppingCart({ productData }) {
   let [loggedInUser, setLoggedInUser] = useState("");
   let [loggedInPicture, setLoggedInPicture] = useState("");
 
+  let [sortedProducts, setSortedProducts] = useState(productData);
+  let handleSort = (e) => {
+    let type = e.target.value;
+
+    let copy = [...productData];
+
+    switch (type) {
+      case "lowest":
+        copy.sort((a, b) => a.price - b.price);
+        break;
+
+      case "highest":
+        copy.sort((a, b) => b.price - a.price);
+        break;
+
+      default:
+        copy.sort((a, b) => a.id - b.id);
+    }
+
+    setSortedProducts(copy);
+  };
   let homePage = () => {
     setShowFinalCart(false);
     setShowSignIn(false);
@@ -137,21 +158,29 @@ function ShoppingCart({ productData }) {
             <p>{totalNoOfItems} items</p>
           </div>
         </div>
-
+        <div style={{ textAlign: "center", margin: "20px" }}>
+          Sort Price By :
+          <select onChange={handleSort}>
+            <option value="normal">Normal</option>
+            <option value="lowest">Lowest</option>
+            <option value="highest">Highest</option>
+          </select>
+        </div>
         {!showFinalCart &&
           !showSignIn &&
           !showCheckout &&
-          productData.map((el, index) => (
+          sortedProducts.map((el, index) => (
             <div
               key={el.desc}
               style={{ border: "1px solid #bbb5b5" }}
               className="p-3 d-flex flex-row"
             >
+          
               <div
                 className="d-flex flex-column align-items-center"
                 style={{ width: "15rem" }}
               >
-                <h4>{el.desc}</h4>
+                  <h4>{el.desc} <span style={{color:"red"}}>${el.price}</span></h4>
                 <div onClick={() => showPopUp(el)}>
                   <img
                     src={el.image}
